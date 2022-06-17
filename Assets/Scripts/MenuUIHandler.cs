@@ -6,16 +6,15 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 // Sets the script to be executed later than all default scripts
 // This is helpful for UI, since other things may need to be initialized before setting the UI
 [DefaultExecutionOrder(1000)]
 public class MenuUIHandler : MonoBehaviour
 {
-    public void NewColorSelected(Color color)
-    {
-        // add code here to handle when a color is selected
-    }
+    public TMP_InputField input; 
+
 
     private void Start()
     {
@@ -23,6 +22,8 @@ public class MenuUIHandler : MonoBehaviour
     }
     public void StartNew()
     {
+        Debug.Log(input.GetComponent<TMP_InputField>().text);
+        PersistanceManager.playerName = input.GetComponent<TMP_InputField>().text;
         SceneManager.LoadScene(1);
     }
     public void Exit()
